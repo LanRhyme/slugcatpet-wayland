@@ -812,8 +812,17 @@ class PetWindow(EffectsMixin, ItemInteractionMixin, QWidget):
     # ── 单猫操作菜单 ──
     def open_cat_menu(self, pet, global_pos):
         from .ui.catmenu import build_cat_menu
+        if getattr(self, "_active_cat_menu", None) is not None:
+            try:
+                self._active_cat_menu.close()
+                self._active_cat_menu.deleteLater()
+            except RuntimeError:
+                pass
         menu = build_cat_menu(pet, self.pets, open_settings=self.open_settings, parent=self)
-        menu.exec(global_pos)
+        menu.setWindowFlags(Qt.WindowType.Dialog | Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
+        menu.move(global_pos)
+        menu.show()
+        self._active_cat_menu = menu
 
     def open_settings(self):
         if self._open_settings_cb is not None:
@@ -1026,6 +1035,14 @@ class PetWindow(EffectsMixin, ItemInteractionMixin, QWidget):
             p.end()
 
     def mousePressEvent(self, e):
+        if getattr(self, "_active_cat_menu", None) is not None:
+            try:
+                self._active_cat_menu.close()
+                self._active_cat_menu.deleteLater()
+            except RuntimeError:
+                pass
+            self._active_cat_menu = None
+
         if self._place_mode:
             if e.button() == Qt.MouseButton.LeftButton:
                 lx, ly = self.to_logical(e.position().x(), e.position().y())
