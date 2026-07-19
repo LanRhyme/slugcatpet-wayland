@@ -4,6 +4,7 @@ Linux Wayland 桌面宠物，让 Rain World 的蛞蝓猫住在你的屏幕上
 
 本项目是基于 PySide6 和 GTK3 Layer Shell 的 Wayland 原生移植版本
 专为 Niri 等现代 Wayland 混成器优化了渲染和交互逻辑，原生支持鼠标透明穿透和物理交互
+本项目 fork 自原始 Windows 桌面宠物项目: [lingxiaojun/slugcatpet](https://github.com/lingxiaojun/slugcatpet)
 
 ## 运行要求
 
@@ -66,6 +67,7 @@ A Linux Wayland desktop pet that puts Rain World's slugcats on your screen
 
 This project is a native Wayland port based on PySide6 and GTK3 Layer Shell
 It optimizes rendering and interaction logic for modern Wayland compositors like Niri, natively supporting mouse passthrough and physics interaction
+This project is a fork of the original Windows desktop pet: [lingxiaojun/slugcatpet](https://github.com/lingxiaojun/slugcatpet)
 
 ## Requirements
 
