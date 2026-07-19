@@ -173,7 +173,7 @@ def main():
     act_hud = QAction(t("tray_hud"))
     act_hud.triggered.connect(hud.toggle_visible)
     act_tab = QAction("显示/隐藏侧边栏 (Toggle TabBar)")
-    act_tab.triggered.connect(lambda: tab.setVisible(not tab.isVisible()))
+    act_tab.triggered.connect(tab.toggle_visible)
     act_pet = QAction("显示/隐藏桌宠 (Toggle Pet)")
     def toggle_pet():
         win = app._gtk3_bridge.gtk_win

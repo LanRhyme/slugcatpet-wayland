@@ -472,6 +472,14 @@ class TabBar(QWidget):
         else:
             self._apply_expanded()
 
+    def toggle_visible(self):
+        if self.isVisible():
+            self.hide()
+        else:
+            self.show()
+            if not self.expanded:
+                self._apply_expanded()
+
     def _animate_to(self, x, w, h, done):
         anim = QPropertyAnimation(self, b"geometry", self)
         anim.setDuration(SLIDE_MS)
